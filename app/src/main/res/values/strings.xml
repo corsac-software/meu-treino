@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Meu Treino</string>
+
+    <string name="grupo_muscular_superiores">Superiores</string>
+    <string name="grupo_muscular_inferiores">Inferiores</string>
+    <string name="grupo_muscular_peitoral">Peitoral</string>
+</resources>
