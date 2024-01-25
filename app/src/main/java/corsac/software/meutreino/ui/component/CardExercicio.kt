@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import corsac.software.meutreino.ext.colors
+import corsac.software.meutreino.etc.ext.colors
 import corsac.software.meutreino.treino.GrupoMuscular
 import corsac.software.meutreino.treino.Treino
 

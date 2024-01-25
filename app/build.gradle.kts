@@ -49,8 +49,12 @@ android {
     }
 }
 
-dependencies {
+object Versions {
+    val Koin = "3.5.3"
+    val KoinCompose = "3.5.3"
+}
 
+dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.0")
@@ -60,6 +64,10 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.room:room-runtime:2.4.2")
+
+    implementation("io.insert-koin:koin-androidx-compose:${Versions.KoinCompose}")
+    compileOnly("io.insert-koin:koin-core:${Versions.Koin}")
+
     annotationProcessor("androidx.room:room-compiler:2.4.2")
 
     testImplementation("junit:junit:4.13.2")

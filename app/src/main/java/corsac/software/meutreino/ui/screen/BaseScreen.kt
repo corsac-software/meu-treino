@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import corsac.software.meutreino.R
-import corsac.software.meutreino.ext.colors
+import corsac.software.meutreino.etc.ext.colors
 import corsac.software.meutreino.ui.theme.MeuTreinoTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
