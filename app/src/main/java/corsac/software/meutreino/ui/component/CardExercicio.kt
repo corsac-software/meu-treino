@@ -54,11 +54,12 @@ fun CardExercicio(
 @Composable
 fun CardExercicio(
     treino: Treino,
+    quantidadeExercicios: Int
 ) {
     CardExercicio(
         nome = treino.nome,
         grupoMuscular = treino.grupoMuscular,
-        quantidadeExercicios = treino.exercicios.size,
+        quantidadeExercicios = quantidadeExercicios,
         descricaoCustomizada = treino.descricaoCustomizada
     )
 }

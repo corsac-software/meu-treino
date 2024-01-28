@@ -1,14 +1,14 @@
 package corsac.software.meutreino.treino
 
-import java.time.LocalDate
-import java.util.UUID
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "exercicio_treino")
 class ExercicioTreino(
-    val id: UUID = UUID.randomUUID(),
-    val exercicio: Exercicio,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+    val idTreino: Long,
+    val idExercicio: Long,
     val repeticoes: Int,
-    val series: Int,
-    val historicoCargas: Set<Carga>
-) {
-    fun getCargaAtual() = historicoCargas.maxByOrNull { it.data } ?: Carga(valor = 0, data = LocalDate.now())
-}
+    val series: Int
+)

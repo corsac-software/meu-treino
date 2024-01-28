@@ -6,19 +6,24 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import corsac.software.meutreino.treino.Exercicio
-import corsac.software.meutreino.treino.ExercicioTreino
-import corsac.software.meutreino.treino.GrupoMuscular
-import corsac.software.meutreino.treino.Treino
+import corsac.software.meutreino.presentation.HomeViewModel
 import corsac.software.meutreino.ui.component.CardExercicio
-import java.util.UUID
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun HomeScreen(treinos: Set<Treino> = emptySet()) {
+fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
+    LaunchedEffect(Unit) {
+        viewModel.iniciarBuscaTreinos()
+    }
+
+    val treinos = viewModel.treinos.value
+
     BaseScreen(
         modifier = Modifier.padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -28,152 +33,16 @@ fun HomeScreen(treinos: Set<Treino> = emptySet()) {
             }
         }
     ) {
-        treinos.forEach { CardExercicio(it) }
-    }
-}
-
-@Composable
-@Preview
-fun HomeScreenPreview() {
-    HomeScreen(
-        setOf(
-            Treino(
-                nome = "Treino A",
-                grupoMuscular = GrupoMuscular.PEITORAL,
-                exercicios = setOf(
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.SUPINO_RETO.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.SUPINO_INCLINADO.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.CRUCIFIXO.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.VOADOR.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.CROSSOVER_ROLDANA.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.TRICEPS_PULLEY.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    )
-                )
-            ),
-            Treino(
-                nome = "Treino B",
-                grupoMuscular = GrupoMuscular.INFERIORES,
-                exercicios = setOf(
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.AGACHAMENTO_LIVRE.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.LEG_PRESS.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.CADEIRA_EXTENSORA.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.FLEXORA_DEITADO.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    )
-                )
-            ),
-            Treino(
-                nome = "Treino C",
-                grupoMuscular = GrupoMuscular.SUPERIORES,
-                exercicios = setOf(
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.PUXADA_SUPINADA.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.REMADA_BAIXA.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.REMADA_CAVALO.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.VOADOR_INVERSO.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.ROSCA_DIRETA.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.ROSCA_ALTERNADA.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                    ),
-                    ExercicioTreino(
-                        id = UUID.randomUUID(),
-                        exercicio = Exercicio.Padroes.ROSCA_MARTELO.instancia,
-                        repeticoes = 10,
-                        series = 4,
-                        historicoCargas = emptySet()
-                )
+        if(treinos.isNullOrEmpty()) {
+            Text(
+                text = "Nenhum treino cadastrado.\nClique no botão \"+\" para adicionar um novo treino.",
+                fontWeight = FontWeight.Bold,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center
             )
-            ),
-        )
-    )
+        } else {
+            treinos.forEach {
+                (key, _) -> CardExercicio(key, viewModel.quantidadeDeExercicios(key))
+            }
+        }
+    }
 }

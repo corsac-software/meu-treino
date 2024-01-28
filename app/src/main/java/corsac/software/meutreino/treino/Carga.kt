@@ -1,10 +1,14 @@
 package corsac.software.meutreino.treino
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.time.LocalDate
-import java.util.UUID
 
+@Entity
 class Carga(
-    val id: UUID = UUID.randomUUID(),
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+    val idExercicioTreino: Long,
     val valor: Int,
-    val data: LocalDate,
+    val data: LocalDate = LocalDate.now(),
 )

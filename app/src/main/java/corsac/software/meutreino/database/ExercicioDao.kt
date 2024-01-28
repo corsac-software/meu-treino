@@ -10,17 +10,20 @@ import corsac.software.meutreino.treino.Exercicio
 @Dao
 interface ExercicioDao {
     @Query("SELECT * FROM exercicio")
-    fun getAll(): List<Exercicio>
+    suspend fun listar(): List<Exercicio>
 
     @Query("SELECT * FROM exercicio WHERE id = :id")
-    fun getById(id: Int): Exercicio?
+    suspend fun buscarPorId(id: Int): Exercicio?
 
     @Insert
-    fun insert(exercicio: Exercicio): Long
+    suspend fun inserir(exercicio: Exercicio): Long
+
+    @Insert
+    suspend fun inserirTodos(exercicios: List<Exercicio>)
 
     @Update
-    fun update(exercicio: Exercicio)
+    suspend fun atualizar(exercicio: Exercicio)
 
     @Delete
-    fun delete(exercicio: Exercicio)
+    suspend fun deletar(exercicio: Exercicio)
 }
