@@ -12,7 +12,8 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import corsac.software.meutreino.R
 import corsac.software.meutreino.etc.ext.colors
@@ -40,8 +41,8 @@ fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
         if(treinos.isNullOrEmpty()) {
             Text(
                 text = "Nenhum treino cadastrado.\nClique no botão \"+\" para adicionar um novo treino.",
-                fontWeight = FontWeight.Bold,
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                fontStyle = FontStyle.Italic,
+                textAlign = TextAlign.Center
             )
         } else {
             treinos.forEach {
