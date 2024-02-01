@@ -24,7 +24,7 @@ import corsac.software.meutreino.presentation.HomeViewModel
 import corsac.software.meutreino.treino.ExercicioTreino
 import corsac.software.meutreino.treino.Treino
 import corsac.software.meutreino.ui.component.BaseScreenLayout
-import corsac.software.meutreino.ui.component.CardExercicio
+import corsac.software.meutreino.ui.component.CardTreino
 import org.koin.androidx.compose.koinViewModel
 
 class HomeScreen : Screen {
@@ -55,20 +55,23 @@ private fun HomeScreenLayout(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         floatingActionButton = {
             FloatingActionButton(onClick = onClickFab) {
-                Icon(Icons.Filled.Add, contentDescription = "Adicionar treino")
+                Icon(
+                  imageVector = Icons.Filled.Add,
+                  contentDescription = stringResource(R.string.acessibilidade_adicionar_treino)
+                )
             }
         },
         topBar = { TopBar() }
     ) {
         if (treinos.isNullOrEmpty()) {
             Text(
-                text = "Nenhum treino cadastrado.\nClique no botão \"+\" para adicionar um novo treino.",
+                text = stringResource(R.string.placeholder_nenhum_treino),
                 fontStyle = FontStyle.Italic,
                 textAlign = TextAlign.Center
             )
         } else {
             treinos.forEach { (treino, listaExercicios) ->
-                CardExercicio(treino, listaExercicios.size)
+                CardTreino(treino, listaExercicios.size)
             }
         }
     }
@@ -78,7 +81,7 @@ private fun HomeScreenLayout(
 @Composable
 private fun TopBar() {
     CenterAlignedTopAppBar(
-        title = { Text(stringResource(id = R.string.app_name)) },
+        title = { Text(stringResource(R.string.app_name)) },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = colors().primaryContainer,
             titleContentColor = colors().onPrimaryContainer,

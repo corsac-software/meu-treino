@@ -1,18 +1,33 @@
 <resources>
     <string name="app_name">Meu Treino</string>
 
+    <!-- Acessibilidade -->
+    <string name="a11y_botao_voltar">Voltar</string>
+    <string name="a11y_icone_trofeu">Icone de troféu</string>
+    <string name="a11y_icone_haltere">Icone de haltere</string>
+
+    <!-- Domínio -->
+    <string name="grupo_muscular">Grupo Muscular</string>
     <string name="grupo_muscular_superiores">Superiores</string>
     <string name="grupo_muscular_inferiores">Inferiores</string>
     <string name="grupo_muscular_peitoral">Peitoral</string>
 
-    <!-- Botões -->
-    <string name="botao_cadastrar">Cadastrar</string>
-
     <!-- Labels -->
     <string name="label_nome_treino">Nome do treino</string>
+    <string name="label_botao_cadastrar">Cadastrar</string>
+
+    <!-- CardTreino -->
+    <string name="contagem_exercicios">%d exercícios</string>
 
     <!-- CardExercicio -->
-    <string name="cardexercicio_contagem_exercicios">%d exercícios</string>
+    <string name="series_reps_resumido">S: %d / R: %d</string>
+    <string name="series_reps_alt">Séries e repetições</string>
+    <string name="carga_alt">Carga</string>
+    <string name="novo_exercicio">Novo exercício</string>
+
+    <!-- HomeScreen -->
+    <string name="acessibilidade_adicionar_treino">Adicionar treino</string>
+    <string name="placeholder_nenhum_treino">Nenhum treino cadastrado.\nClique no botão "+" para adicionar um novo treino.</string>
 
     <!-- CriacaoTreinoScreen -->
     <string name="titulo_criando_novo_treino">Criando novo treino</string>
@@ -20,7 +35,4 @@
     <string name="sugestao_treino_a">Treino A</string>
     <string name="sugestao_treino_b">Treino B</string>
     <string name="sugestao_treino_c">Treino C</string>
-
-    <!-- Acessibilidade geral -->
-    <string name="acessibilidade_botao_voltar">Salvar</string>
 </resources>

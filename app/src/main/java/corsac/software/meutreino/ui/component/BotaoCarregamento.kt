@@ -22,12 +22,17 @@ import androidx.compose.ui.unit.toSize
 import corsac.software.meutreino.etc.ext.colors
 
 @Composable
-fun BotaoCarregamento(text: @Composable () -> Unit, isCarregando: Boolean, onClick: () -> Unit) {
+fun BotaoCarregamento(
+    modifier: Modifier = Modifier,
+    text: @Composable () -> Unit,
+    isCarregando: Boolean,
+    onClick: () -> Unit
+) {
     var buttonSize by remember { mutableStateOf(DpSize.Zero) }
     val density = LocalDensity.current
 
     Button(
-        modifier = Modifier
+        modifier = modifier
             .then(
                 if (buttonSize != DpSize.Zero) Modifier.size(buttonSize) else Modifier
             )

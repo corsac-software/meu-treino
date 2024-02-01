@@ -28,7 +28,7 @@ fun AppBarBasica(
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.acessibilidade_botao_voltar),
+                    contentDescription = stringResource(R.string.a11y_botao_voltar),
                 )
             }
         },
