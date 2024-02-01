@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import corsac.software.meutreino.R
 import corsac.software.meutreino.etc.ext.colors
 import corsac.software.meutreino.treino.GrupoMuscular
 import corsac.software.meutreino.treino.Treino
@@ -45,7 +46,10 @@ fun CardExercicio(
             Row {
                 Text(text = textoDescricao, fontSize = 16.sp, color = colors().secondary)
                 Text(text = " • ", fontSize = 16.sp, color = colors().secondary)
-                Text(text = "$quantidadeExercicios exercícios", fontSize = 16.sp, color = colors().secondary)
+                Text(text = stringResource(R.string.cardexercicio_contagem_exercicios, quantidadeExercicios),
+                    fontSize = 16.sp,
+                    color = colors().secondary
+                )
             }
         }
     }

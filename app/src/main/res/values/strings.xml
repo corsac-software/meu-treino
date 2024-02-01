@@ -11,6 +11,9 @@
     <!-- Labels -->
     <string name="label_nome_treino">Nome do treino</string>
 
+    <!-- CardExercicio -->
+    <string name="cardexercicio_contagem_exercicios">%d exercícios</string>
+
     <!-- CriacaoTreinoScreen -->
     <string name="titulo_criando_novo_treino">Criando novo treino</string>
     <string name="placeholder_input_nome_treino">Ex: Treino A</string>
