@@ -4,4 +4,20 @@
     <string name="grupo_muscular_superiores">Superiores</string>
     <string name="grupo_muscular_inferiores">Inferiores</string>
     <string name="grupo_muscular_peitoral">Peitoral</string>
+
+    <!-- Botões -->
+    <string name="botao_cadastrar">Cadastrar</string>
+
+    <!-- Labels -->
+    <string name="label_nome_treino">Nome do treino</string>
+
+    <!-- CriacaoTreinoScreen -->
+    <string name="titulo_criando_novo_treino">Criando novo treino</string>
+    <string name="placeholder_input_nome_treino">Ex: Treino A</string>
+    <string name="sugestao_treino_a">Treino A</string>
+    <string name="sugestao_treino_b">Treino B</string>
+    <string name="sugestao_treino_c">Treino C</string>
+
+    <!-- Acessibilidade geral -->
+    <string name="acessibilidade_botao_voltar">Salvar</string>
 </resources>

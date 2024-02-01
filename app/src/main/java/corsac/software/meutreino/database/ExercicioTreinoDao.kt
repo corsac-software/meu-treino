@@ -9,10 +9,10 @@ import corsac.software.meutreino.treino.ExercicioTreino
 
 @Dao
 interface ExercicioTreinoDao {
-    @Query("SELECT * FROM exercicio_treino WHERE idTreino = :idTreino")
+    @Query("SELECT * FROM ExercicioTreino WHERE idTreino = :idTreino")
     suspend fun listarPorIdTreino(idTreino: Long): List<ExercicioTreino>
 
-    @Query("SELECT * FROM exercicio_treino WHERE id = :id")
+    @Query("SELECT * FROM ExercicioTreino WHERE id = :id")
     suspend fun buscarPorId(id: Int): ExercicioTreino?
 
     @Insert

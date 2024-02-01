@@ -13,7 +13,7 @@ interface TreinoDao {
     @Query("SELECT * FROM treino")
     suspend fun listar(): List<Treino>
 
-    @Query("SELECT * FROM treino JOIN exercicio_treino ON treino.id = exercicio_treino.idTreino")
+    @Query("SELECT * FROM treino JOIN ExercicioTreino ON treino.id = ExercicioTreino.idTreino")
     suspend fun listarComExercicios(): Map<Treino, List<ExercicioTreino>>
 
     @Insert

@@ -9,7 +9,7 @@ class Treino(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val nome: String,
-    @ColumnInfo(name = "grupo_muscular", typeAffinity = ColumnInfo.TEXT)
+    @ColumnInfo(typeAffinity = ColumnInfo.TEXT)
     val grupoMuscular: GrupoMuscular,
     val descricaoCustomizada: String? = null,
 )
