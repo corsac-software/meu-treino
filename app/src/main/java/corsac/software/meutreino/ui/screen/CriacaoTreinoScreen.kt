@@ -11,8 +11,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -28,43 +26,53 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import corsac.software.meutreino.R
-import corsac.software.meutreino.etc.ext.colors
-import corsac.software.meutreino.presentation.CriacaoTreinoViewModel
+import corsac.software.meutreino.ui.component.AppBarBasica
 import corsac.software.meutreino.ui.component.AutoCompleteInput
+import corsac.software.meutreino.ui.component.BaseScreenLayout
 import corsac.software.meutreino.ui.component.BotaoCarregamento
-import org.koin.androidx.compose.koinViewModel
 
-data class CriacaoTreinoData(
-    var nomeTreino: String = "",
-)
+class CriacaoTreinoScreen : Screen {
+    internal data class State(
+        var nomeTreino: String = "",
+    )
 
-@Composable
-fun CriacaoTreinoScreen(viewModel: CriacaoTreinoViewModel = koinViewModel()) {
-    val (data, setData) = remember { mutableStateOf(CriacaoTreinoData()) }
+    @Composable
+    override fun Content() {
+        val (data, setData) = remember { mutableStateOf(State()) }
+        val navigator = LocalNavigator.currentOrThrow
 
-    CriacaoTreinoLayout(data, setData)
+        CriacaoTreinoLayout(
+            data = data,
+            setData = setData,
+            onSubmit = { },
+            onClickBack = { navigator.pop() }
+        )
+    }
 }
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-private fun CriacaoTreinoLayout(data: CriacaoTreinoData,
-                        setData: (CriacaoTreinoData) -> Unit,
-                        isCadastrando: Boolean = false,
-                        onSubmit: () -> Unit = {}) {
-    BaseScreen(topBar = {
-        TopAppBar(
-            title = { Text(stringResource(R.string.titulo_criando_novo_treino)) },
-            navigationIcon = {
+private fun CriacaoTreinoLayout(
+    data: CriacaoTreinoScreen.State,
+    setData: (CriacaoTreinoScreen.State) -> Unit,
+    isCadastrando: Boolean = false,
+    onSubmit: () -> Unit = {},
+    onClickBack: () -> Unit,
+) {
+    BaseScreenLayout(topBar = {
+        AppBarBasica(
+            titulo = stringResource(R.string.titulo_criando_novo_treino),
+            backIcon = {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = stringResource(R.string.acessibilidade_botao_voltar)
                 )
             },
-            colors = TopAppBarDefaults.smallTopAppBarColors(
-                containerColor = colors().primaryContainer,
-                titleContentColor = colors().onPrimaryContainer,
-            )
+            onClickBack = onClickBack
         )
     }) {
         InputNomeTreino(data = data, setData = setData)
@@ -84,8 +92,10 @@ private fun CriacaoTreinoLayout(data: CriacaoTreinoData,
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun InputNomeTreino(data: CriacaoTreinoData,
-                    setData: (CriacaoTreinoData) -> Unit,) {
+private fun InputNomeTreino(
+    data: CriacaoTreinoScreen.State,
+    setData: (CriacaoTreinoScreen.State) -> Unit,
+) {
     val (nomeTreino) = data
     val inputInteractionSource = remember { MutableInteractionSource() }
     val isInputFocused = inputInteractionSource.collectIsFocusedAsState() as MutableState<Boolean>
@@ -134,7 +144,7 @@ private fun InputNomeTreino(data: CriacaoTreinoData,
 @Preview
 @Composable
 private fun CriacaoTreinoScreenPreview() {
-    val (state, setState) = remember { mutableStateOf(CriacaoTreinoData()) }
+    val (state, setState) = remember { mutableStateOf(CriacaoTreinoScreen.State()) }
     var isCadastrando by remember { mutableStateOf(false) }
 
     CriacaoTreinoLayout(state, setState, isCadastrando) { isCadastrando = !isCadastrando }

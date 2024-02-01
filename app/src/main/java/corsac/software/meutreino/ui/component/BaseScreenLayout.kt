@@ -1,4 +1,4 @@
-package corsac.software.meutreino.ui.screen
+package corsac.software.meutreino.ui.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,12 +12,13 @@ import corsac.software.meutreino.ui.theme.MeuTreinoTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BaseScreen(modifier: Modifier = Modifier,
-               topBar: @Composable (() -> Unit) = {},
-               verticalArrangement: Arrangement.Vertical = Arrangement.Top,
-               floatingActionButton: @Composable (() -> Unit) = {},
-               content: @Composable () -> Unit,
-               ) {
+fun BaseScreenLayout(
+    modifier: Modifier = Modifier,
+    topBar: @Composable (() -> Unit) = {},
+    verticalArrangement: Arrangement.Vertical = Arrangement.Top,
+    floatingActionButton: @Composable (() -> Unit) = {},
+    content: @Composable () -> Unit,
+) {
     MeuTreinoTheme {
         Scaffold(
             topBar = topBar,

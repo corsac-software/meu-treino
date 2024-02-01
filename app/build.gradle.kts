@@ -54,6 +54,7 @@ object Versions {
     val Koin = "3.5.3"
     val KoinCompose = "3.5.3"
     val Room = "2.6.1"
+    val Voyager = "1.0.0"
 }
 
 dependencies {
@@ -67,6 +68,13 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.room:room-runtime:${Versions.Room}")
     implementation("androidx.room:room-ktx:${Versions.Room}")
+
+    implementation("cafe.adriel.voyager:voyager-navigator:${Versions.Voyager}")
+    implementation("cafe.adriel.voyager:voyager-screenmodel:${Versions.Voyager}")
+    implementation("cafe.adriel.voyager:voyager-bottom-sheet-navigator:${Versions.Voyager}")
+    implementation("cafe.adriel.voyager:voyager-tab-navigator:${Versions.Voyager}")
+    implementation("cafe.adriel.voyager:voyager-transitions:${Versions.Voyager}")
+    implementation("cafe.adriel.voyager:voyager-koin:${Versions.Voyager}")
 
     implementation("io.insert-koin:koin-androidx-compose:${Versions.KoinCompose}")
     compileOnly("io.insert-koin:koin-core:${Versions.Koin}")

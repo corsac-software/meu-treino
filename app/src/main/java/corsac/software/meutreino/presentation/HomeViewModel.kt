@@ -15,5 +15,5 @@ class HomeViewModel(val treinoDao: TreinoDao) : ViewModel() {
         }
     }
 
-    fun quantidadeDeExercicios(treino: Treino) = treinos.value?.get(treino)?.size ?: 0
+
 }

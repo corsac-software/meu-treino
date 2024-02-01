@@ -15,38 +15,60 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import corsac.software.meutreino.R
 import corsac.software.meutreino.etc.ext.colors
 import corsac.software.meutreino.presentation.HomeViewModel
+import corsac.software.meutreino.treino.ExercicioTreino
+import corsac.software.meutreino.treino.Treino
+import corsac.software.meutreino.ui.component.BaseScreenLayout
 import corsac.software.meutreino.ui.component.CardExercicio
 import org.koin.androidx.compose.koinViewModel
 
-@Composable
-fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
-    LaunchedEffect(Unit) {
-        viewModel.iniciarBuscaTreinos()
+class HomeScreen : Screen {
+    @Composable
+    override fun Content() {
+        val viewModel = koinViewModel<HomeViewModel>()
+        val navigator = LocalNavigator.currentOrThrow
+
+        LaunchedEffect(Unit) {
+            viewModel.iniciarBuscaTreinos()
+        }
+
+        val treinos = viewModel.treinos.value
+
+        HomeScreenLayout(
+            onClickFab = { navigator.push(CriacaoTreinoScreen()) },
+            treinos = treinos
+        )
     }
+}
 
-    val treinos = viewModel.treinos.value
-
-    BaseScreen(
+@Composable
+private fun HomeScreenLayout(
+    onClickFab: () -> Unit,
+    treinos: Map<Treino, List<ExercicioTreino>>?,
+) {
+    BaseScreenLayout(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         floatingActionButton = {
-            FloatingActionButton(onClick = {}) {
+            FloatingActionButton(onClick = onClickFab) {
                 Icon(Icons.Filled.Add, contentDescription = "Adicionar treino")
             }
         },
         topBar = { TopBar() }
     ) {
-        if(treinos.isNullOrEmpty()) {
+        if (treinos.isNullOrEmpty()) {
             Text(
                 text = "Nenhum treino cadastrado.\nClique no botão \"+\" para adicionar um novo treino.",
                 fontStyle = FontStyle.Italic,
                 textAlign = TextAlign.Center
             )
         } else {
-            treinos.forEach {
-                (key, _) -> CardExercicio(key, viewModel.quantidadeDeExercicios(key))
+            treinos.forEach { (treino, listaExercicios) ->
+                CardExercicio(treino, listaExercicios.size)
             }
         }
     }
